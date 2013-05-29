@@ -63,7 +63,6 @@
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super dealloc];
 }
 
 
@@ -103,7 +102,6 @@
             
 			[self addSubview:progress];
             
-			[progress release];
 		}
         self.clipsToBounds = YES;
     }
@@ -151,7 +149,7 @@
 }
 
 -(BOOL) alreadyPurchased{
-	NSMutableSet* productIDs = [[NSMutableSet new] autorelease];
+	NSMutableSet* productIDs = [NSMutableSet new];
 	if (productId != nil)
 		[productIDs addObject:productId];	
 	
@@ -273,6 +271,7 @@
 			
             break;
         case ButtonStateBuyDisabled:
+        {
             buyButton.enabled = NO;
 			
 			// set background
@@ -284,9 +283,11 @@
 			
 			// set price text
             [buyButton setTitle:price forState:UIControlStateNormal];
-            [buyButton setTitle:price forState:UIControlStateDisabled];	
+            [buyButton setTitle:price forState:UIControlStateDisabled];
+        }
 			break;
         case ButtonStateBought:
+        {
             buyButton.enabled = NO;
 			
 			// clear background image
@@ -304,6 +305,7 @@
             [buyButton setTitle:@"" forState:UIControlStateDisabled];
             [buyButton setTitle:@"" forState:UIControlStateHighlighted];
             [buyButton setTitle:@"" forState:UIControlStateSelected];
+        }
            break;
         default:
             break;

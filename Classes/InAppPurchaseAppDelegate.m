@@ -115,13 +115,4 @@
      */
 }
 
-
-- (void)dealloc {
-	[storeController release];
-	[InAppPurchaseManager release];
-    [window release];
-    [super dealloc];
-}
-
-
 @end

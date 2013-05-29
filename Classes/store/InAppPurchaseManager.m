@@ -32,10 +32,8 @@
 #import "InAppPurchaseManager.h"
 #import "SKProduct+LocalizedPrice.h"
 #import "NSString+NSStringAdditions.h"
-#import "SFHFKeychainUtils.h"
 #import "NSNotificationAdditions.h"
-
-
+#import "SSKeychain.h"
 
 static BOOL needsRestore;
 
@@ -50,10 +48,10 @@ static NSString* const KEYCHAIN_SERVICE_NAME = @"MY_STORE_NAME";
 - (void)completeTransaction:(SKPaymentTransaction *)transaction;
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction;
 - (void)failedTransaction:(SKPaymentTransaction *)transaction;
--(void)updateProgress:(NSTimer*)timer;
--(void) notifyProductsFetched;
+- (void)updateProgress:(NSTimer*)timer;
+- (void) notifyProductsFetched;
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;
--(void) checkNeedsRestore;
+- (void) checkNeedsRestore;
 @end
 
 
@@ -79,7 +77,7 @@ NSString*  const kInAppPurchaseManagerTransactionInitiatedNotification = @"kInAp
 -(id) initWithIds:(NSArray*)pids{
 	if (self = [super init]){
 			
-		productIds = [pids retain];	 
+		productIds = pids;	 
 		
 
 		progressTimer = nil;
@@ -90,12 +88,11 @@ NSString*  const kInAppPurchaseManagerTransactionInitiatedNotification = @"kInAp
 		
 		NSMutableDictionary* p = [NSMutableDictionary new];
 		self.progress = p;
-		[p release];
 		
 		[self loadStore];
 		
 		NSError* error;
-		NSString* pass = [SFHFKeychainUtils getPasswordForUsername:KEYCHAIN_PRODUCT_ID_USER andServiceName:KEYCHAIN_SERVICE_NAME error:&error];
+        NSString* pass = [SSKeychain passwordForService:KEYCHAIN_SERVICE_NAME account:KEYCHAIN_PRODUCT_ID_USER error:&error];
 		if (pass != nil)	
 			alreadyPurchasedProductIds = [[NSMutableArray alloc] initWithArray:[pass componentsSeparatedByString: @"|"]];
 		else
@@ -113,7 +110,7 @@ NSString*  const kInAppPurchaseManagerTransactionInitiatedNotification = @"kInAp
 		
 		NSString* title = @"RESTORE PURCHASED CONTENT";
 		NSString* msg = @"Would you like to check the App Store for previously purchased video content?";
-		UIAlertView * alert = [[[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK",nil] autorelease];
+		UIAlertView * alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK",nil];
 		[alert show];	
 	}			
 }
@@ -128,14 +125,6 @@ NSString*  const kInAppPurchaseManagerTransactionInitiatedNotification = @"kInAp
 
 }
 
--(void) dealloc{
-	
-	[productIds release];
-	[products release];
-	[alreadyPurchasedProductIds release];
-	
-	[super dealloc];
-}
 
 //
 // call this method once on startup
@@ -187,7 +176,7 @@ NSString*  const kInAppPurchaseManagerTransactionInitiatedNotification = @"kInAp
 	  msg = @"An attempt to restore previously purchased content has failed. Trying again";
 	else
 		 msg = @"Two attempts to restore previously purchased content have failed. Please re-install app";
-	UIAlertView * alert = [[[UIAlertView alloc] initWithTitle:title message:msg delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] autorelease];
+	UIAlertView * alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
 	[alert show];
 	if (restoreAttempts == 1){
 		[self restore];
@@ -248,8 +237,8 @@ NSString*  const kInAppPurchaseManagerTransactionInitiatedNotification = @"kInAp
 
 - (BOOL) validateReceipt:(SKPaymentTransaction*)transaction
 {
-	NSData* receipt = transaction.transactionReceipt;
-	NSString* codedReceipt = [NSString base64StringFromData:receipt length:[receipt length]];
+//	NSData* receipt = transaction.transactionReceipt;
+//	NSString* codedReceipt = [NSString base64StringFromData:receipt length:[receipt length]];
 	
 	//hit web service to validate receipt
 	
@@ -285,7 +274,7 @@ NSString*  const kInAppPurchaseManagerTransactionInitiatedNotification = @"kInAp
 {
 	
 	NSError* error;
-	NSString* pass = [SFHFKeychainUtils getPasswordForUsername:KEYCHAIN_PRODUCT_ID_USER andServiceName:KEYCHAIN_SERVICE_NAME error:&error];
+    NSString* pass = [SSKeychain passwordForService:KEYCHAIN_SERVICE_NAME account:KEYCHAIN_PRODUCT_ID_USER error:&error];
 
 	NSString* newPass;
 	NSString* productID = transaction.payment.productIdentifier; 
@@ -296,14 +285,12 @@ NSString*  const kInAppPurchaseManagerTransactionInitiatedNotification = @"kInAp
 	
 	[alreadyPurchasedProductIds addObject:productID];
 	
-	[SFHFKeychainUtils storeUsername:KEYCHAIN_PRODUCT_ID_USER andPassword:newPass forServiceName:KEYCHAIN_SERVICE_NAME updateExisting:YES error:&error];
-
- 
+    [SSKeychain setPassword:newPass forService:KEYCHAIN_SERVICE_NAME account:KEYCHAIN_PRODUCT_ID_USER error:&error];
 }
 
 -(void) clearAlreadyPurchased{
 	NSError* error;
-	[SFHFKeychainUtils storeUsername:KEYCHAIN_PRODUCT_ID_USER andPassword:@"" forServiceName:KEYCHAIN_SERVICE_NAME updateExisting:YES error:&error];
+    [SSKeychain setPassword:nil forService:KEYCHAIN_SERVICE_NAME account:KEYCHAIN_PRODUCT_ID_USER error:&error];
 	[alreadyPurchasedProductIds removeAllObjects];
 	needsRestore = YES;
 	restoreCompleted = NO;
@@ -460,7 +447,6 @@ NSString*  const kInAppPurchaseManagerTransactionInitiatedNotification = @"kInAp
 		[newProducts setObject:product forKey:product.productIdentifier];
 	}
 	self.products = newProducts;
-	[newProducts release];
  
 	//log invalid product ids
     for (NSString *invalidProductId in response.invalidProductIdentifiers)
@@ -469,7 +455,6 @@ NSString*  const kInAppPurchaseManagerTransactionInitiatedNotification = @"kInAp
     }
     
     // finally release the reqest we alloc/init’ed in requestProductData
-    [productsRequest release];
 
 	//if restore has been requested, but hasn't received a response, then don't notify
 	

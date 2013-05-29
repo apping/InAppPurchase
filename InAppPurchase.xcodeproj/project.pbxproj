@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		C71C5B3C17561B7200DFEA27 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = C71C5B3917561B7200DFEA27 /* SSKeychain.m */; };
+		C71C5B3D17561B7200DFEA27 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C71C5B3B17561B7200DFEA27 /* SSKeychainQuery.m */; };
 		F16DE4B6131575E90097C627 /* Products.plist in Resources */ = {isa = PBXBuildFile; fileRef = F16DE4B5131575E90097C627 /* Products.plist */; };
 		F16DE50A13157F6C0097C627 /* Bought_Check_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = F16DE50613157F6C0097C627 /* Bought_Check_btn.png */; };
 		F16DE50B13157F6C0097C627 /* btn_lrg-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = F16DE50713157F6C0097C627 /* btn_lrg-disabled.png */; };
@@ -24,13 +26,19 @@
 		F1B561A313145DA300E7D29D /* InAppPurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5619713145DA300E7D29D /* InAppPurchaseManager.m */; };
 		F1B561A413145DA300E7D29D /* NSNotificationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5619913145DA300E7D29D /* NSNotificationAdditions.m */; };
 		F1B561A513145DA300E7D29D /* NSString+NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5619B13145DA300E7D29D /* NSString+NSStringAdditions.m */; };
-		F1B561A613145DA300E7D29D /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5619D13145DA300E7D29D /* SFHFKeychainUtils.m */; };
 		F1B561A713145DA300E7D29D /* SKProduct+LocalizedPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5619F13145DA300E7D29D /* SKProduct+LocalizedPrice.m */; };
 		F1B561A813145DA300E7D29D /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B561A213145DA300E7D29D /* StoreViewController.m */; };
 		F1B5627D131465F600E7D29D /* StoreTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5627C131465F600E7D29D /* StoreTableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C71C5B341756194100DFEA27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1B55FE91314552000E7D29D /* SimStoreKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1502A0AC13CE205A00CC4FB4;
+			remoteInfo = "SimStoreKit-Mac";
+		};
 		F1B55FF11314552000E7D29D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F1B55FE91314552000E7D29D /* SimStoreKit.xcodeproj */;
@@ -65,6 +73,10 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* InAppPurchase_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppPurchase_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* InAppPurchase-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "InAppPurchase-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		C71C5B3817561B7200DFEA27 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		C71C5B3917561B7200DFEA27 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		C71C5B3A17561B7200DFEA27 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
+		C71C5B3B17561B7200DFEA27 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
 		F16DE4B5131575E90097C627 /* Products.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Products.plist; sourceTree = "<group>"; };
 		F16DE50613157F6C0097C627 /* Bought_Check_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bought_Check_btn.png; sourceTree = "<group>"; };
 		F16DE50713157F6C0097C627 /* btn_lrg-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_lrg-disabled.png"; sourceTree = "<group>"; };
@@ -79,8 +91,6 @@
 		F1B5619913145DA300E7D29D /* NSNotificationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNotificationAdditions.m; sourceTree = "<group>"; };
 		F1B5619A13145DA300E7D29D /* NSString+NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NSStringAdditions.h"; sourceTree = "<group>"; };
 		F1B5619B13145DA300E7D29D /* NSString+NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSStringAdditions.m"; sourceTree = "<group>"; };
-		F1B5619C13145DA300E7D29D /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
-		F1B5619D13145DA300E7D29D /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		F1B5619E13145DA300E7D29D /* SKProduct+LocalizedPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKProduct+LocalizedPrice.h"; sourceTree = "<group>"; };
 		F1B5619F13145DA300E7D29D /* SKProduct+LocalizedPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKProduct+LocalizedPrice.m"; sourceTree = "<group>"; };
 		F1B561A013145DA300E7D29D /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
@@ -132,6 +142,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				C71C5B3617561B5200DFEA27 /* lib */,
 				F1B55FE91314552000E7D29D /* SimStoreKit.xcodeproj */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -177,11 +188,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C71C5B3617561B5200DFEA27 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				C71C5B3717561B7200DFEA27 /* SSKeychain */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		C71C5B3717561B7200DFEA27 /* SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				C71C5B3817561B7200DFEA27 /* SSKeychain.h */,
+				C71C5B3917561B7200DFEA27 /* SSKeychain.m */,
+				C71C5B3A17561B7200DFEA27 /* SSKeychainQuery.h */,
+				C71C5B3B17561B7200DFEA27 /* SSKeychainQuery.m */,
+			);
+			name = SSKeychain;
+			path = sskeychain/SSKeychain;
+			sourceTree = "<group>";
+		};
 		F1B55FEA1314552000E7D29D /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				F1B55FF21314552000E7D29D /* libSimStoreKit.a */,
 				F1B55FF41314552000E7D29D /* TestApp.app */,
+				C71C5B351756194100DFEA27 /* libSimStoreKit-Mac.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,8 +227,6 @@
 				F1B5619913145DA300E7D29D /* NSNotificationAdditions.m */,
 				F1B5619A13145DA300E7D29D /* NSString+NSStringAdditions.h */,
 				F1B5619B13145DA300E7D29D /* NSString+NSStringAdditions.m */,
-				F1B5619C13145DA300E7D29D /* SFHFKeychainUtils.h */,
-				F1B5619D13145DA300E7D29D /* SFHFKeychainUtils.m */,
 				F1B5619E13145DA300E7D29D /* SKProduct+LocalizedPrice.h */,
 				F1B5619F13145DA300E7D29D /* SKProduct+LocalizedPrice.m */,
 				F1B561A013145DA300E7D29D /* Store.h */,
@@ -230,8 +260,11 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "InAppPurchase" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -256,6 +289,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		C71C5B351756194100DFEA27 /* libSimStoreKit-Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libSimStoreKit-Mac.a";
+			remoteRef = C71C5B341756194100DFEA27 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		F1B55FF21314552000E7D29D /* libSimStoreKit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -298,10 +338,11 @@
 				F1B561A313145DA300E7D29D /* InAppPurchaseManager.m in Sources */,
 				F1B561A413145DA300E7D29D /* NSNotificationAdditions.m in Sources */,
 				F1B561A513145DA300E7D29D /* NSString+NSStringAdditions.m in Sources */,
-				F1B561A613145DA300E7D29D /* SFHFKeychainUtils.m in Sources */,
 				F1B561A713145DA300E7D29D /* SKProduct+LocalizedPrice.m in Sources */,
 				F1B561A813145DA300E7D29D /* StoreViewController.m in Sources */,
 				F1B5627D131465F600E7D29D /* StoreTableCell.m in Sources */,
+				C71C5B3C17561B7200DFEA27 /* SSKeychain.m in Sources */,
+				C71C5B3D17561B7200DFEA27 /* SSKeychainQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -327,6 +369,7 @@
 				GCC_PREFIX_HEADER = InAppPurchase_Prefix.pch;
 				HEADER_SEARCH_PATHS = lib/simstorekit;
 				INFOPLIST_FILE = "InAppPurchase-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = InAppPurchase;
 			};
 			name = Debug;
@@ -335,11 +378,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = InAppPurchase_Prefix.pch;
 				HEADER_SEARCH_PATHS = lib/simstorekit;
 				INFOPLIST_FILE = "InAppPurchase-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = InAppPurchase;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -353,8 +398,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -367,8 +411,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};

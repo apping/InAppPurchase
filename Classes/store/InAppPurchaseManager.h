@@ -33,9 +33,6 @@
 #import <Foundation/Foundation.h>
 #import "store.h"
 
-
-
-
 // notifications sent out when the transaction completes
 extern NSString* const kInAppPurchaseManagerTransactionCancelledNotification;
 extern NSString* const kInAppPurchaseManagerTransactionFailedNotification;
@@ -61,23 +58,21 @@ extern NSString* const kInAppPurchaseManagerTransactionInitiatedNotification;
 
 } 
 
-+(void) setNeedsRestore:(BOOL)needs;
-+(BOOL) needsRestore;
++(void)setNeedsRestore:(BOOL)needs;
++(BOOL)needsRestore;
 +(BOOL)canMakePurchases;
 
 // public methods
--(id)   initWithIds:(NSArray*)pids;
--(BOOL) canPurchase:(NSString*)productID;
--(void) purchase:(NSString*)productId;
--(void) purchaseCleanup:(NSString*)productID;
--(void) restore;
--(BOOL) hasAlreadyPurchased:(NSSet*)productIDs;
--(void) clearAlreadyPurchased;
--(float) getProgress:(NSString*)productID;
+-(id)initWithIds:(NSArray*)pids;
+-(BOOL)canPurchase:(NSString*)productID;
+-(void)purchase:(NSString*)productId;
+-(void)purchaseCleanup:(NSString*)productID;
+-(void)restore;
+-(BOOL)hasAlreadyPurchased:(NSSet*)productIDs;
+-(void)clearAlreadyPurchased;
+-(float)getProgress:(NSString*)productID;
 
-
-@property (nonatomic, retain) NSMutableDictionary* products;
-@property (nonatomic, retain) NSMutableDictionary* progress;
-
+@property (nonatomic, strong) NSMutableDictionary* products;
+@property (nonatomic, strong) NSMutableDictionary* progress;
 
 @end 

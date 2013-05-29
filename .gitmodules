@@ -1,3 +1,6 @@
 [submodule "lib/simstorekit"]
 	path = lib/simstorekit
 	url = https://github.com/millenomi/simstorekit.git
+[submodule "lib/sskeychain"]
+	path = lib/sskeychain
+	url = https://github.com/soffes/sskeychain.git
